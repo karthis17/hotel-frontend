@@ -1,0 +1,45 @@
+
+<div class="container">
+    <h1 class="text-center my-5">Booking Form</h1>
+    <div class="row mb-5">
+        <form (ngSubmit)="saveData()" [formGroup]="contactForm" class="w-100">
+            <div *ngIf="success === true" class="alert alert-success col-lg-8 my-2 mx-auto" role="alert">
+                The form was successfully submitted we will contact you soon
+            </div>
+            <div *ngIf="success === false" class="alert alert-danger col-lg-8 my-2 mx-auto" role="alert">
+                please fill all required fields
+              </div>
+            <div class="col-lg-8 my-1 mx-auto">
+                <mat-form-field appearance="outline">
+                    <mat-label>Name</mat-label>
+                    <input matInput [formControl]="contactForm.controls['name']" placeholder="Jhon">
+                    <mat-error *ngIf="contactForm.controls['name'].hasError('required')">
+                        Name is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-lg-8 my-1 mx-auto">
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input [formControl]="contactForm.controls['email']" matInput  placeholder="Snow">
+                    <mat-error *ngIf="contactForm.controls['email'].hasError('required')">
+                        Email is <strong>required</strong>
+                    </mat-error>
+                    <mat-error *ngIf="contactForm.controls['email'].hasError('email')">
+                        Enter correct <strong> email </strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-lg-8 my-1 mx-auto">
+                <mat-form-field appearance="outline">
+                    <mat-label>Message</mat-label>
+                    <textarea matInput [formControl]="contactForm.controls['message']" placeholder="Jhon"></textarea>
+                    <mat-error *ngIf="contactForm.controls['message'].hasError('required')">
+                        message is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+                <button class="btn btn-outline-dark" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

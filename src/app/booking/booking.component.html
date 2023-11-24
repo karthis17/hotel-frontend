@@ -1,0 +1,111 @@
+<div class="container">
+    <h1 class="text-center my-5">Booking Form</h1>
+    <div class="row mb-5">
+        <form (ngSubmit)="saveData()" [formGroup]="bookingForm" class="w-100">
+            <div *ngIf="success" class="alert alert-success col-lg-8 my-2 mx-auto" role="alert">
+                The form was successfully submitted then we email for futher details to the email you menstioned above and we will confirm your booking soon
+            </div>
+            <div class="col-lg-8 my-1 mx-auto">
+                <mat-form-field appearance="outline">
+                    <mat-label>First name</mat-label>
+                    <input matInput [formControl]="bookingForm.controls['firstname']" placeholder="Jhon">
+                    <mat-error *ngIf="bookingForm.controls['firstname'].hasError('required')">
+                        Firstname is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-lg-8 my-1 mx-auto">
+                <mat-form-field appearance="outline">
+                    <mat-label>Last name</mat-label>
+                    <input [formControl]="bookingForm.controls['lastname']" matInput  placeholder="Snow">
+                    <mat-error *ngIf="bookingForm.controls['lastname'].hasError('required')">
+                        Lastnmae is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-lg-8 my-1 mx-auto">
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input type="email" [formControl]="bookingForm.controls['email']" matInput  placeholder="example@gmail.com">
+                    <mat-error *ngIf="bookingForm.controls['email'].hasError('required')">
+                        Email is <strong>required</strong>
+                    </mat-error>
+                    <mat-error *ngIf="bookingForm.controls['email'].hasError('email')">
+                        Enter correct <strong>email format</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-lg-8 my-1 mx-auto">
+                <mat-form-field appearance="outline">
+                    <mat-label>Phone number</mat-label>
+                    <input [formControl]="bookingForm.controls['phno']" matInput  placeholder="Phone">
+                    <mat-error *ngIf="bookingForm.controls['phno'].hasError('required')">
+                        Phone number is <strong>required</strong>
+                    </mat-error>
+                    <mat-error *ngIf="bookingForm.controls['phno'].errors">
+                        Enter <strong>number only</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-lg-8 my-1 mx-auto">
+                <mat-form-field appearance="outline">
+                    <mat-label>Check in</mat-label>
+                    <input matInput [formControl]="bookingForm.controls['checkin']" [matDatepicker]="picker">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker">
+                      <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngIf="bookingForm.controls['checkin'].hasError('required')">
+                      Check in date is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-lg-8 my-1 mx-auto">
+                <mat-form-field appearance="outline">
+                    <mat-label>Check out</mat-label>
+                    <input matInput [formControl]="bookingForm.controls['checkout']" [matDatepicker]="picker1">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker1">
+                      <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                    <mat-error *ngIf="bookingForm.controls['checkout'].hasError('required')">
+                      Date of birth is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-lg-8 my-1 mx-auto">
+                <mat-form-field appearance="outline">
+                        <mat-label>Room</mat-label>
+                        <mat-select [formControl]="bookingForm.controls['roomtype']">
+                          <mat-option *ngFor="let room of data " value="{{ room.room_type}}">{{ room.room_type }}</mat-option>
+                        </mat-select>
+                    <mat-error *ngIf="bookingForm.controls['roomtype'].hasError('required')">
+                        Phone number is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-lg-8 my-1 mx-auto">
+                <mat-form-field appearance="outline">
+                    <mat-label>Adult</mat-label>
+                    <input [formControl]="bookingForm.controls['adult']" matInput  placeholder="Phone">
+                    <mat-error *ngIf="bookingForm.controls['adult'].hasError('required')">
+                        No of adult is <strong>required</strong>
+                    </mat-error>
+                    <mat-error *ngIf="bookingForm.controls['adult'].errors">
+                        No of adult is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-lg-8 my-1 mx-auto">
+                <mat-form-field appearance="outline">
+                    <mat-label>Children</mat-label>
+                    <input [formControl]="bookingForm.controls['children']" matInput="number"  placeholder="Phone">
+                </mat-form-field>
+                <button class="btn btn-outline-primary mx-auto" type="submit">Sumbit</button>
+            </div>
+        </form>
+    </div>
+    
+</div>

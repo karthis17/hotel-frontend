@@ -1,0 +1,61 @@
+<div class="container my-5">
+    <div class="text-center my-5">
+        <h1>{{ data["room_type"] }}</h1>
+        <p>When Comfort Meets Luxury</p>
+    </div>
+    <p class="px-5">
+        {{ data.about }}
+    </p>
+    <div class="d-flex justify-content-around"> <a href="/book-room" class="btn btn-outline-dark my-4">Book Now</a></div>
+    <div *ngIf="data.luxury">
+        <h3>In private room</h3>
+        <ul>
+            <li *ngFor="let item of data.private_room">{{ item }}</li>
+        </ul>
+        <h3>Views</h3>
+        <ul>
+            <li *ngFor="let view of data.views">{{ view }}</li>
+        </ul>
+    </div>
+    <div class="row my-5">
+        <div class="col-lg-4 text-center bg-light p-3">
+            <p><span class="material-symbols-outlined"> person </span></p>
+            <h3>Max occupancy</h3>
+            <p>{{ data.amenities["max_occupaction"] }}</p>
+        </div>
+        <div class="col-lg-4 text-center bg-light p-3">
+            <p><span class="material-symbols-outlined"> bed </span></p>
+            <h3>Bed types</h3>
+            <p>{{ data.amenities["bed_type"] }}</p>
+        </div>
+        <div class="col-lg-4 text-center bg-light p-3">
+            <p><span class="material-symbols-outlined"> dangerous </span></p>
+            <h3>Smoking</h3>
+            <p>{{ data.amenities["smocking"] }}</p>
+        </div>
+
+        <div class="col-lg-4 text-center bg-light p-3">
+            <p><span class="material-symbols-outlined"> featured_play_list </span></p>
+            <h3>Room features</h3>
+            <p>{{ data.amenities["room_features"] }}</p>
+        </div>
+        <div class="col-lg-4 text-center bg-light p-3">
+            <p><span class="material-symbols-outlined"> service_toolbox </span></p>
+            <h3>Equipments</h3>
+            <p>{{ data.amenities["equipment"] }}</p>
+        </div>
+    </div>
+</div>
+<div class="container-fluid my-5">
+    <div class="row">
+        <div class="col-lg-4">
+            <img src="{{ data.img1 }}" alt="" srcset="" height="350" class="w-100" />
+        </div>
+        <div class="col-lg-4">
+            <img src="{{ data.img2 }}" alt="" srcset="" height="350" class="w-100" />
+        </div>
+        <div class="col-lg-4">
+            <img src="{{ data.img3 }}" alt="" srcset="" height="350" class="w-100" />
+        </div>
+    </div>
+</div>
